@@ -1,13 +1,14 @@
 Summary:	SQLgrey is a postfix grey-listing policy service
 Name:		sqlgrey
-Version:	1.6.6
+Version:	1.7.5
 Release:	%mkrel 1
 License:	GPL
 Group:		System/Servers
 URL:		http://sqlgrey.sourceforge.net
 Source0:	http://prdownloads.sourceforge.net/sqlgrey/%{name}-%{version}.tar.bz2
-Source1:	sqlgrey.init.bz2
-Patch0:		sqlgrey-1.5.3-mdk_conf.diff.bz2
+Source1:	sqlgrey.init
+Patch0:         sqlgrey-1.7.4-sqlite.patch
+Patch1:         sqlgrey-1.7.4-warnings.patch
 Requires(post,preun): rpm-helper
 Requires(pre,postun): rpm-helper
 Requires:	perl-DBD-SQLite
@@ -24,13 +25,13 @@ time).
 %prep
 
 %setup -q
-%patch0 -p0
+%patch0 -p1
+%patch1 -p1
 
-bzcat %{SOURCE1} > sqlgrey.init
 
 %build
 
-make
+%make
 
 %install
 [ "%{buildroot}" != "/" ] && rm -rf %{buildroot}
@@ -44,13 +45,13 @@ install -d %{buildroot}%{_var}/run/sqlgrey
 
 install -m0755 sqlgrey %{buildroot}%{_sbindir}/
 install -m0755 update_sqlgrey_config %{buildroot}%{_sbindir}/
-install -m0755 sqlgrey.init %{buildroot}%{_initrddir}/sqlgrey
+install -m0755 %{SOURCE1} %{buildroot}%{_initrddir}/sqlgrey
 install -m0644 etc/sqlgrey.conf %{buildroot}%{_sysconfdir}/sqlgrey/
 install -m0644 etc/clients_ip_whitelist %{buildroot}%{_sysconfdir}/sqlgrey/
 install -m0644 etc/clients_fqdn_whitelist %{buildroot}%{_sysconfdir}/sqlgrey/
 install -m0644 etc/dyn_fqdn.regexp %{buildroot}%{_sysconfdir}/sqlgrey/
 install -m0644 etc/smtp_server.regexp %{buildroot}%{_sysconfdir}/sqlgrey/
-install -m0644 sqlgrey.1 %{buildroot}%{_mandir}/man1/
+#install -m0644 sqlgrey.1 %{buildroot}%{_mandir}/man1/
 
 %pre
 %_pre_useradd sqlgrey %{_localstatedir}/sqlgrey /bin/sh
@@ -80,4 +81,4 @@ install -m0644 sqlgrey.1 %{buildroot}%{_mandir}/man1/
 %attr(0755,root,root) %{_sbindir}/update_sqlgrey_config
 %attr(0755,sqlgrey,sqlgrey) %dir %{_localstatedir}/sqlgrey
 %attr(0755,sqlgrey,sqlgrey) %dir %{_var}/run/sqlgrey
-%attr(0644,root,root) %{_mandir}/man1/sqlgrey.1*
+#%attr(0644,root,root) %{_mandir}/man1/sqlgrey.1*
