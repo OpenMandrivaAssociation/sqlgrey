@@ -13,6 +13,7 @@ Requires(post,preun): rpm-helper
 Requires(pre,postun): rpm-helper
 Requires:	perl-DBD-SQLite
 BuildArch:	noarch
+BuildRoot:	%{_tmppath}/%{name}-%{version}-buildroot
 
 %description
 SQLgrey is a Postfix grey-listing policy service with
