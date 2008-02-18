@@ -1,4 +1,4 @@
-Summary:	SQLgrey is a postfix grey-listing policy service
+Summary:	Postfix grey-listing policy service
 Name:		sqlgrey
 Version:	1.7.5
 Release:	%mkrel 1
