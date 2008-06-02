@@ -40,7 +40,7 @@ install -d %{buildroot}%{_sbindir}
 install -d %{buildroot}%{_sysconfdir}/sqlgrey
 install -d %{buildroot}%{_initrddir}
 install -d %{buildroot}%{_mandir}/man1
-install -d %{buildroot}%{_localstatedir}/sqlgrey
+install -d %{buildroot}%{_localstatedir}/lib/sqlgrey
 install -d %{buildroot}%{_var}/run/sqlgrey
 
 install -m0755 sqlgrey %{buildroot}%{_sbindir}/
@@ -54,7 +54,7 @@ install -m0644 etc/smtp_server.regexp %{buildroot}%{_sysconfdir}/sqlgrey/
 #install -m0644 sqlgrey.1 %{buildroot}%{_mandir}/man1/
 
 %pre
-%_pre_useradd sqlgrey %{_localstatedir}/sqlgrey /bin/sh
+%_pre_useradd sqlgrey %{_localstatedir}/lib/sqlgrey /bin/sh
 
 %post
 %_post_service sqlgrey
@@ -79,6 +79,6 @@ install -m0644 etc/smtp_server.regexp %{buildroot}%{_sysconfdir}/sqlgrey/
 %attr(0644,root,root) %config(noreplace) %{_sysconfdir}/sqlgrey/smtp_server.regexp
 %attr(0755,root,root) %{_sbindir}/sqlgrey
 %attr(0755,root,root) %{_sbindir}/update_sqlgrey_config
-%attr(0755,sqlgrey,sqlgrey) %dir %{_localstatedir}/sqlgrey
+%attr(0755,sqlgrey,sqlgrey) %dir %{_localstatedir}/lib/sqlgrey
 %attr(0755,sqlgrey,sqlgrey) %dir %{_var}/run/sqlgrey
 #%attr(0644,root,root) %{_mandir}/man1/sqlgrey.1*
