@@ -1,7 +1,7 @@
 Summary:	Postfix grey-listing policy service
 Name:		sqlgrey
-Version:	1.7.5
-Release:	%mkrel 5
+Version:	1.7.6
+Release:	%mkrel 1
 License:	GPL
 Group:		System/Servers
 URL:		http://sqlgrey.sourceforge.net
@@ -9,11 +9,13 @@ Source0:	http://prdownloads.sourceforge.net/sqlgrey/%{name}-%{version}.tar.bz2
 Source1:	sqlgrey.init
 Patch0:         sqlgrey-1.7.4-sqlite.patch
 Patch1:         sqlgrey-1.7.4-warnings.patch
-Requires(post,preun): rpm-helper
-Requires(pre,postun): rpm-helper
+Requires(post): rpm-helper
+Requires(preun): rpm-helper
+Requires(pre): rpm-helper
+Requires(postun): rpm-helper
 Requires:	perl-DBD-SQLite
 BuildArch:	noarch
-BuildRoot:	%{_tmppath}/%{name}-%{version}-buildroot
+BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-buildroot
 
 %description
 SQLgrey is a Postfix grey-listing policy service with
@@ -26,15 +28,14 @@ time).
 
 %setup -q
 %patch0 -p1
-%patch1 -p1
-
+%patch1 -p0
 
 %build
 
 %make
 
 %install
-[ "%{buildroot}" != "/" ] && rm -rf %{buildroot}
+rm -rf %{buildroot}
 
 install -d %{buildroot}%{_sbindir}
 install -d %{buildroot}%{_sysconfdir}/sqlgrey
@@ -66,7 +67,7 @@ install -m0644 etc/smtp_server.regexp %{buildroot}%{_sysconfdir}/sqlgrey/
 %_postun_userdel sqlgrey
 
 %clean
-[ "%{buildroot}" != "/" ] && rm -rf %{buildroot}
+rm -rf %{buildroot}
 
 %files
 %defattr(-,root,root)
