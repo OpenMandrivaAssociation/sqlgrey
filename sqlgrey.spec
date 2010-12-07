@@ -1,7 +1,7 @@
 Summary:	Postfix grey-listing policy service
 Name:		sqlgrey
 Version:	1.7.6
-Release:	%mkrel 3
+Release:	%mkrel 4
 License:	GPL
 Group:		System/Servers
 URL:		http://sqlgrey.sourceforge.net
