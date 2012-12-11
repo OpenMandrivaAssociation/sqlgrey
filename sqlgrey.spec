@@ -83,3 +83,65 @@ rm -rf %{buildroot}
 %attr(0755,sqlgrey,sqlgrey) %dir %{_localstatedir}/lib/sqlgrey
 %attr(0755,sqlgrey,sqlgrey) %dir %{_var}/run/sqlgrey
 #%attr(0644,root,root) %{_mandir}/man1/sqlgrey.1*
+
+
+%changelog
+* Wed Dec 08 2010 Oden Eriksson <oeriksson@mandriva.com> 1.7.6-4mdv2011.0
++ Revision: 614954
+- the mass rebuild of 2010.1 packages
+
+* Thu May 06 2010 Luis Daniel Lucio Quiroz <dlucio@mandriva.org> 1.7.6-3mdv2010.1
++ Revision: 542780
+- S1 updated for LBS complain
+
+* Tue Sep 08 2009 Thierry Vignaud <tv@mandriva.org> 1.7.6-2mdv2010.0
++ Revision: 434082
+- rebuild
+
+* Sun Sep 07 2008 Oden Eriksson <oeriksson@mandriva.com> 1.7.6-1mdv2009.0
++ Revision: 282267
+- 1.7.6
+- rediffed P1
+
+* Sat Aug 02 2008 Thierry Vignaud <tv@mandriva.org> 1.7.5-5mdv2009.0
++ Revision: 260983
+- rebuild
+
+* Tue Jul 29 2008 Thierry Vignaud <tv@mandriva.org> 1.7.5-4mdv2009.0
++ Revision: 253014
+- rebuild
+
+  + Pixel <pixel@mandriva.com>
+    - adapt to %%_localstatedir now being /var instead of /var/lib (#22312)
+
+* Mon Feb 18 2008 Thierry Vignaud <tv@mandriva.org> 1.7.5-2mdv2008.1
++ Revision: 171118
+- rebuild
+- fix "foobar is blabla" summary (=> "blabla") so that it looks nice in rpmdrake
+- kill re-definition of %%buildroot on Pixel's request
+
+  + Olivier Blin <oblin@mandriva.com>
+    - restore BuildRoot
+
+* Wed Sep 05 2007 Jérôme Soyer <saispo@mandriva.org> 1.7.5-1mdv2008.0
++ Revision: 80488
+- New release 1.7.5
+- Import sqlgrey
+
+
+
+* Tue May 09 2006 Jerome Soyer <saispo@mandriva.org> 1.6.6-1mdk
+- New release 1.6.6
+
+* Tue Jul 05 2005 Oden Eriksson <oeriksson@mandriva.com> 1.6.2-1mdk
+- 1.6.2 (Minor bugfixes)
+
+* Sun Jun 19 2005 Oden Eriksson <oeriksson@mandriva.com> 1.6.0-1mdk
+- 1.6.0 (Major feature enhancements)
+- fix deps
+- use the %%mkrel macro
+
+* Mon Mar 07 2005 Oden Eriksson <oden.eriksson@kvikkjokk.net> 1.5.3-1mdk
+- initial Mandrakelinux package
+- added P0 & S1
+- used fragments of the provided spec file
