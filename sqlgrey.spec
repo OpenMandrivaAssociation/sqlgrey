@@ -4,7 +4,7 @@ Version:	1.7.6
 Release:	5
 License:	GPL
 Group:		System/Servers
-URL:		http://sqlgrey.sourceforge.net
+URL:		https://sqlgrey.sourceforge.net
 Source0:	http://prdownloads.sourceforge.net/sqlgrey/%{name}-%{version}.tar.bz2
 Source1:	sqlgrey.init
 Patch0:         sqlgrey-1.7.4-sqlite.patch
