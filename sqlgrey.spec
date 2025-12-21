@@ -17,6 +17,7 @@ Requires:	perl-DBD-SQLite
 BuildArch:	noarch
 BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-buildroot
 
+BuildRequires:	make
 %description
 SQLgrey is a Postfix grey-listing policy service with
 auto-white-listing written in Perl with SQL database as storage
